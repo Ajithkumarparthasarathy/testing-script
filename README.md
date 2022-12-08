@@ -6,3 +6,4 @@ new
 one
 th
 thala
+one
