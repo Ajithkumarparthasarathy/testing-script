@@ -1,24 +1,29 @@
-name: Create Release
+name: Testing Example Workflow
 
-on: push
+
+# This is Event
+on:
+    pull_request:
+    branches: [ $default-branch ]
+
 
 jobs:
-  deploy:
+    build:
+
+# We are using the ubuntu runner here
     runs-on: ubuntu-latest
 
+
+# Preexisting action which we are using
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
+        - uses: actions/checkout@v2
 
-      - name: Generate release tag
-        uses: Ajithkumarparthasarathy/next-release-tag@v1.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        - run: echo "Hello Spritle"
 
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.release_tag }}
-          release_name: Release ${{ env.release_tag }}
+
+
+
+
+
+
+
